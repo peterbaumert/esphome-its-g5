@@ -68,7 +68,7 @@ void ITSG5Receiver::setup() {
 
 void ITSG5Receiver::loop() {
   // Start the sniffer once, as soon as the network is connected.
-  if (!this->sniffer_started_ && network::is_connected()) {
+  if (!this->sniffer_started_) {
     const uint32_t now = App.get_loop_component_start_time();
     if (this->last_start_attempt_ms_ == 0 || now - this->last_start_attempt_ms_ >= SNIFFER_RETRY_INTERVAL_MS) {
       this->last_start_attempt_ms_ = now;
